@@ -1,0 +1,105 @@
+:root {
+  --darkest-blue: #03123c;
+  --dark-blue: #000066;
+  --light-blue: #56b8f1;
+  --lightest-blue: #d9fbff;
+  --off-white: #f8f8f8;
+  --white: #fff;
+  --dark-grey: #333;
+  --medium--grey: #666;
+}
+
+html {
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  padding: .5rem 1rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a,
+.link {
+  text-decoration: none;
+  color: var(--light-blue);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.map-container {
+  flex: 3;
+  margin: 0.625rem 0;
+}
+
+.artwork-container {
+  flex: 1;
+  overflow-x: auto;
+  padding: 0.625rem 0;
+  margin: 0.625rem 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.as-map {
+  width: 100%;
+  height: 100%;
+  border: 0.0625rem solid #ccc;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.as-artwork-list {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.as-artwork-list>div {
+  flex: 1;
+  min-width: 8.25rem;
+  margin-right: 0.625rem;
+  background-color: #ddd;
+  padding: 0.625rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+/* Style the navigation container */
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+  padding: 0.5rem 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+nav a:hover {
+  color: #007bff;
+}
