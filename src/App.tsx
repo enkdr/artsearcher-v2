@@ -1,9 +1,11 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { FaHome, FaImage, FaUser, FaImages } from 'react-icons/fa'; // Import icons
 import Home from './Components/Home';
 import { Icon } from './Components/Icons';
+import { getAllArtists, getAllGalleries, fetchAndStoreEntities } from './db'
+import { useEffect, useState } from 'react';
+import { Artist, Gallery } from './types';
 
 function AnimatedRoutes() {
   const location = useLocation(); // track current route
@@ -32,7 +34,38 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
+
 function App() {
+
+
+  // initialise IndexedDB and fetch data OR pull from existing data
+  useEffect(() => {
+    const init = async () => {
+      try {
+
+        await fetchAndStoreEntities();
+
+        // custom calls from UI to get from indexedDB
+        const artistData = await getAllArtists();
+        const gallerytData = await getAllGalleries();
+
+        setArtists(artistData);
+        setGalleries(gallerytData);
+
+      } catch (error) {
+        setError("Error fetching artists from IndexedDB");
+      } finally {
+        setLoading(false);
+      }
+    };
+    init();
+  }, []);
+
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
+  const [artists, setArtists] = useState<Artist[]>([])
+  const [galleries, setGalleries] = useState<Gallery[]>([])
+
   return (
     <Router>
       <div style={{ position: 'relative', overflow: 'hidden', height: 'calc(100vh - 60px)' }}>
