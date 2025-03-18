@@ -84,6 +84,47 @@ a,
   text-align: center;
 }
 
+.as-artwork-card {
+  width: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.as-artwork-card:hover {
+  transform: scale(1.05);
+}
+
+.as-artwork-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.as-artwork-card-content {
+  padding: 16px;
+}
+
+.as-artwork-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.as-artwork-card p {
+  font-size: 14px;
+  color: #777;
+}
+
+.as-artwork-gallery {
+  font-weight: bold;
+  color: #0056b3;
+  margin-top: 6px;
+}
+
+
 nav {
   display: flex;
   justify-content: space-around;

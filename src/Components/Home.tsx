@@ -2,25 +2,16 @@ import { use, useEffect, useState } from 'react';
 import ASMap from './ASMap';
 import ArtworksList from './ArtworksList';
 import { Artwork, createApiUrl, GPSLocation } from '../types';
+import { getArtworksNearby } from '../db';
 
 
 
-export default function Home() {
+const Home: React.FC = () => {
 
-    const url = createApiUrl("artworks", `artworks_nearby/-37.7787726/144.9777089/100`);
-
-    console.log(" :: url :: ", url);
-
-    // const [location, setLocation] = useState<GPSLocation | null>(null);
     const [artworks, setArtworks] = useState<Artwork[]>([]);
 
-
     useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                setArtworks(data);
-            })
+        getArtworksNearby().then(setArtworks);
     }, []);
 
     return (
@@ -34,3 +25,5 @@ export default function Home() {
         </div>
     );
 }
+
+export default Home;

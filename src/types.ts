@@ -1,4 +1,4 @@
-const apiUrl = import.meta.env.VITE_API_URL;
+import { apiUrl } from "./config";
 
 type EntityType = "artists" | "artworks" | "galleries" | "countries";
 
@@ -8,7 +8,8 @@ type EntityApiPaths = {
     | `artist-artworks/${string}`; // artistId
     artworks: "artworks_all"
     | "artworks_highlights"
-    | "artworks_random" | `artworks_nearby/${number}/${number}/${number}`
+    | "artworks_random"
+    | `artworks_nearby/${number}/${number}/${number}`
     | `artwork/${string}`; // artworkId
     galleries: "galleries"
     | `gallery_artworks/${string}`
