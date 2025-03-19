@@ -1,5 +1,5 @@
 import { Artwork } from "../types";
-import { shortUrl } from "../config";
+import { baseUrl } from "../config";
 
 
 interface ArtworkListProps {
@@ -26,12 +26,11 @@ const ArtworksList: React.FC<ArtworkListProps> = ({ artworks }) => {
 const ArtworkItem: React.FC<ArtworkItemProps> = ({ artwork }) => {
     return (
         <div className="as-artwork-card">
-            <img src={`${shortUrl}` + artwork.imageUrl} alt={artwork.artworkTitle} />
-            <div className="as-artwor-card-content">
-                <h3>Composition VIII</h3>
-                <p>Artist: Wassily Kandinsky</p>
-                <p>Year: 1923</p>
-                <p className="as-artwork-card-gallery">Gallery: Guggenheim Museum</p>
+            <img src={`${baseUrl}` + artwork.imageUrl} alt={artwork.artworkTitle} />
+            <div className="as-artwork-card-content">
+                <h4>{artwork.artworkTitle}</h4>
+                <p className="as-artwork-card-artist">{artwork.artistTitle}</p>
+                <p className="as-artwork-card-gallery">Guggenheim Museum</p>
             </div>
         </div>
     );
