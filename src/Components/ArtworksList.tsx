@@ -4,20 +4,24 @@ import { baseUrl } from "../config";
 
 interface ArtworkListProps {
     artworks: Artwork[];
+    screen?: "search" | "home";
 }
 
 interface ArtworkItemProps {
     artwork: Artwork;
 }
 
-const ArtworksList: React.FC<ArtworkListProps> = ({ artworks }) => {
+const ArtworksList: React.FC<ArtworkListProps> = ({ artworks, screen }) => {
     console.log(artworks);
     return (
-        <div className="as-artwork-list">
-            {artworks.map((artwork: Artwork, i) => (
-                <ArtworkItem key={i} artwork={artwork} />
-            ))}
-        </div>
+        <>
+            {screen === "search" ? (<input className="as-search-input" type="text" placeholder="Search Artworks" />) : null}
+            <div className="as-artwork-list">
+                {artworks.map((artwork: Artwork, i) => (
+                    <ArtworkItem key={i} artwork={artwork} />
+                ))}
+            </div>
+        </>
     );
 };
 

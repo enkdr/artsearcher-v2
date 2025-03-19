@@ -1,16 +1,22 @@
 import { useEffect, useState } from 'react';
 import ArtistList from './ArtistsList';
-import { Artist } from '../types';
-import { getArtists } from '../db';
+import { Artist, Artwork } from '../types';
+import { getArtists, getHightlights } from '../db';
+import ArtworksList from './ArtworksList';
 
 
 
 const Search: React.FC = () => {
 
     const [artists, setArtists] = useState<Artist[]>([]);
+    const [highlights, setHighlights] = useState<Artwork[]>([]);
 
     useEffect(() => {
         getArtists().then(setArtists);
+    }, []);
+
+    useEffect(() => {
+        getHightlights().then(setHighlights);
     }, []);
 
     return (
@@ -19,7 +25,7 @@ const Search: React.FC = () => {
                 <ArtistList artists={artists} />
             </div>
             <div className="search-container">
-                <ArtistList artists={artists} />
+                <ArtworksList artworks={highlights} screen="search" />
             </div>
             <div className="search-container">
                 <ArtistList artists={artists} />

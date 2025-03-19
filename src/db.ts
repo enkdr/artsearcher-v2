@@ -32,3 +32,10 @@ export const getArtists = () => {
         .then(res => res.json())
         .then(data => data as Artist[]);
 };
+
+export const getHightlights = () => {
+    const url = createApiUrl("artworks", `artworks_highlights`);
+    return fetch(url)
+        .then(res => res.json())
+        .then(data => data as Artwork[]);
+};
