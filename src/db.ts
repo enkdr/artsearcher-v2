@@ -33,9 +33,16 @@ export const getArtists = () => {
         .then(data => data as Artist[]);
 };
 
-export const getHightlights = () => {
+export const getHighlights = () => {
     const url = createApiUrl("artworks", `artworks_highlights`);
     return fetch(url)
         .then(res => res.json())
         .then(data => data as Artwork[]);
+};
+
+export const getGalleries = () => {
+    const url = createApiUrl("galleries", `galleries`);
+    return fetch(url)
+        .then(res => res.json())
+        .then(data => data as Gallery[]);
 };
