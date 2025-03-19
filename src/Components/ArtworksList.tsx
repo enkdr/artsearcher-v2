@@ -15,8 +15,7 @@ const ArtworksList: React.FC<ArtworkListProps> = ({ artworks }) => {
     console.log(artworks);
     return (
         <div className="as-artwork-list">
-            {/* Render artworks here */}
-            {artworks.map((artwork, i) => (
+            {artworks.map((artwork: Artwork, i) => (
                 <ArtworkItem key={i} artwork={artwork} />
             ))}
         </div>

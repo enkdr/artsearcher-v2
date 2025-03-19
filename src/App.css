@@ -43,12 +43,12 @@ a,
   height: 100%;
 }
 
-.map-container {
+.top-container {
   flex: 1.8;
   margin: 0.625rem 0;
 }
 
-.artwork-container {
+.bottom-container {
   flex: 1;
   overflow-x: auto;
   padding: 0.625rem 0;
@@ -113,7 +113,7 @@ a,
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.25rem;
-  /* 4px to rem */
+  line-height: 1.3rem;
 }
 
 .as-artwork-card-artist {

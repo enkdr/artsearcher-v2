@@ -16,10 +16,10 @@ const Home: React.FC = () => {
 
     return (
         <div className="container">
-            <div className="map-container">
+            <div className="top-container">
                 <ASMap />
             </div>
-            <div className="artwork-container">
+            <div className="bottom-container">
                 <ArtworksList artworks={artworks} />
             </div>
         </div>

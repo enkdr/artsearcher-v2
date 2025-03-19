@@ -23,3 +23,10 @@ export const getArtworksNearby = () => {
         .then(res => res.json())
         .then(data => data as Artwork[]);
 };
+
+export const getArtists = () => {
+    const url = createApiUrl("artists", `artists`);
+    return fetch(url)
+        .then(res => res.json())
+        .then(data => data as Artist[]);
+};
