@@ -1,4 +1,4 @@
-import { Artist, Artwork, Country, createApiUrl, EndPoint, Gallery } from './types';
+import { Artist, Artwork, Country, createApiUrl, EndPoint, Gallery, GPSLocation } from './types';
 
 // artworks-nearby: "/api/artworks_nearby/:lat/:long/:limit"
 // artist-artworks: "/api/artist_artworks/:artistid"
@@ -17,8 +17,10 @@ import { Artist, Artwork, Country, createApiUrl, EndPoint, Gallery } from './typ
 // const url1 = createApiUrl("artists", "artists");
 // const url2 = createApiUrl("artworks", `artworks-nearby/40.7128/-74.0060/10`);
 
-export const getArtworksNearby = () => {
-    const url = createApiUrl("artworks", `artworks_nearby/40.7128/-74.0060/10`);
+
+export const getArtworksNearby = (lat: number, lon: number, radius: number = 100) => {
+
+    const url = createApiUrl("artworks", `artworks_nearby/${lat}/${lon}/${radius}`);
     return fetch(url)
         .then(res => res.json())
         .then(data => data as Artwork[]);

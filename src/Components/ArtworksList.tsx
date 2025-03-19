@@ -10,7 +10,6 @@ interface ArtworkItemProps {
     artwork: Artwork;
 }
 
-
 const ArtworksList: React.FC<ArtworkListProps> = ({ artworks }) => {
     console.log(artworks);
     return (
@@ -25,11 +24,11 @@ const ArtworksList: React.FC<ArtworkListProps> = ({ artworks }) => {
 const ArtworkItem: React.FC<ArtworkItemProps> = ({ artwork }) => {
     return (
         <div className="as-artwork-card">
-            <img src={`${baseUrl}` + artwork.imageUrl} alt={artwork.artworkTitle} />
+            <img loading="lazy" src={`${baseUrl}` + artwork.imageUrl} alt={artwork.artworkTitle} />
             <div className="as-artwork-card-content">
                 <h4>{artwork.artworkTitle}</h4>
                 <p className="as-artwork-card-artist">{artwork.artistTitle}</p>
-                <p className="as-artwork-card-gallery">Guggenheim Museum</p>
+                <p className="as-artwork-card-gallery">{artwork.galleryTitle}</p>
             </div>
         </div>
     );

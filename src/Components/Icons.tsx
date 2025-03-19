@@ -37,7 +37,24 @@ export const Icon: React.FC<IconProps> = ({ icon, onClick, size = 24, className 
     );
 }
 
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1">
+    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+    <path d="M21 21l-6 -6"></path>
+</svg>
+
 const iconPaths = {
+    search: [
+        'M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0',
+        'M21 21l-6 -6'
+    ],
+    location: [
+        'M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0',
+        'M12 12m-8 0a8 8 0 1 0 16 0a8 8 0 1 0 -16 0',
+        'M12 2l0 2',
+        'M12 20l0 2',
+        'M20 12l2 0',
+        'M2 12l2 0'
+    ],
     artist: [
         'M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0',
         'M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2'

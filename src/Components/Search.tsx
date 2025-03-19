@@ -1,12 +1,11 @@
-import { use, useEffect, useState } from 'react';
-import ASMap from './ASMap';
+import { useEffect, useState } from 'react';
 import ArtistList from './ArtistsList';
 import { Artist } from '../types';
 import { getArtists } from '../db';
 
 
 
-const Artists: React.FC = () => {
+const Search: React.FC = () => {
 
     const [artists, setArtists] = useState<Artist[]>([]);
 
@@ -16,14 +15,17 @@ const Artists: React.FC = () => {
 
     return (
         <div className="container">
-            <div className="top-container">
-                <ASMap />
+            <div className="search-container">
+                <ArtistList artists={artists} />
             </div>
-            <div className="bottom-container">
+            <div className="search-container">
+                <ArtistList artists={artists} />
+            </div>
+            <div className="search-container">
                 <ArtistList artists={artists} />
             </div>
         </div>
     );
 }
 
-export default Artists;
+export default Search;
