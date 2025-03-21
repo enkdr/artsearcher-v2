@@ -1,5 +1,6 @@
 import { Artwork } from "../types";
 import { baseUrl } from "../config";
+import { Link } from "react-router-dom";
 
 interface ArtworksListProps {
     artworks: Artwork[] | null;
@@ -20,14 +21,16 @@ const ArtworksList: React.FC<ArtworksListProps> = ({ artworks }) => {
 
 const ArtworkItem: React.FC<{ artwork: Artwork }> = ({ artwork }) => {
     return (
-        <div className="as-artwork-card">
-            <img loading="lazy" src={`${baseUrl}${artwork.imageUrl}`} alt={artwork.artworkTitle} />
-            <div className="as-artwork-card-content">
-                <h4>{artwork.artworkTitle}</h4>
-                <p className="as-artwork-card-artist">{artwork.artistTitle}</p>
-                <p className="as-artwork-card-gallery">{artwork.galleryTitle}</p>
+        <Link to={`/artwork/${artwork.artworkId}`} state={{ artwork }}>
+            <div className="as-artwork-card">
+                <img loading="lazy" src={`${baseUrl}${artwork.imageUrl}`} alt={artwork.artworkTitle} />
+                <div className="as-artwork-card-content">
+                    <h4>{artwork.artworkTitle}</h4>
+                    <p className="as-artwork-card-artist">{artwork.artistTitle}</p>
+                    <p className="as-artwork-card-gallery">{artwork.galleryTitle}</p>
+                </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

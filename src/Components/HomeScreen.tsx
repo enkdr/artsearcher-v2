@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import ASMap from './ASMap';
 import ArtworksList from './ArtworksList';
-import { Loading } from '../Components/Loading';
+import { Loading } from './Loading';
 import { Artwork } from '../types';
 import { getArtworksNearby } from '../api-calls';
 
-const Home: React.FC = () => {
+const HomeScreen: React.FC = () => {
 
     const [defaultRadius, setDefaultRadius] = useState<number>(100);
     const [artworks, setArtworks] = useState<Artwork[] | null>(null);
@@ -98,4 +98,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default HomeScreen;

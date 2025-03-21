@@ -1,7 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import Home from './Components/Home';
+import HomeScreen from './Components/HomeScreen';
+import ArtworkScreen from './Components/ArtworkScreen';
 import { Icon } from './Components/Icons';
 
 function AnimatedRoutes() {
@@ -10,7 +11,8 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+        <Route path="/" element={<PageWrapper><HomeScreen /></PageWrapper>} />
+        <Route path="/artwork/:artworkId" element={<PageWrapper><ArtworkScreen /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
