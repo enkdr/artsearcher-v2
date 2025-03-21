@@ -6,7 +6,7 @@ const ArtworkScreen: React.FC = () => {
 
     const { artworkId } = useParams<{ artworkId: string }>();
     const location = useLocation();
-    const artwork: Artwork | undefined = location.state?.artwork; // Get artwork from state
+    const artwork: Artwork | undefined = location.state?.artwork;
 
     if (!artwork) return <p>Artwork not found</p>;
 
@@ -20,7 +20,12 @@ const ArtworkScreen: React.FC = () => {
                 </div>
             </div>
             <div className="bottom-container">
-                <h1>Artwork bottom container</h1>
+                <div className="as-gallery-detail">
+                    gallery: {artwork.galleryTitle}
+                </div>
+                <div className="as-artist-detail">
+                    artist: {artwork.artistTitle}
+                </div>
             </div>
         </div>
     );
