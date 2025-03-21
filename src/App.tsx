@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import { AnimatePresence, motion } from 'framer-motion';
 import Home from './Components/Home';
 import { Icon } from './Components/Icons';
-import Artworks from './Components/Artworks';
-import Artists from './Components/Artists';
 
 function AnimatedRoutes() {
   const location = useLocation(); // track current route
@@ -13,11 +11,6 @@ function AnimatedRoutes() {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-        {/* <Route path="/artists" element={<PageWrapper><Artists /></PageWrapper>} />
-        <Route path="/artworks" element={<PageWrapper><Artworks /></PageWrapper>} /> */}
-        {/* <Route path="/search" element={<PageWrapper><Search /></PageWrapper>} /> */}
-
-        {/* <Route path="/galleries" element={<PageWrapper><h1>Galleries</h1></PageWrapper>} /> */}
       </Routes>
     </AnimatePresence>
   );
@@ -48,18 +41,6 @@ function App() {
         <Link to="/">
           <Icon icon="location" />
         </Link>
-        <Link to="/artists">
-          <Icon icon="artist" />
-        </Link>
-        <Link to="/artworks">
-          <Icon icon="artwork" />
-        </Link>
-        {/* <Link to="/search">
-          <Icon icon="search" />
-        </Link> */}
-        {/* <Link to="/galleries">
-          <Icon icon="gallery" />
-        </Link> */}
       </nav>
     </Router>
   );

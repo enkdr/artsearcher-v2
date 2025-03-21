@@ -3,7 +3,7 @@ import { baseUrl } from "../config";
 
 interface ArtworksListProps {
     artworks: Artwork[] | null;
-    screen: string;
+    screen?: string;
 }
 
 const ArtworksList: React.FC<ArtworksListProps> = ({ artworks }) => {
