@@ -78,6 +78,8 @@ const ArtistScreen: React.FC = () => {
                     ) : (
                         <div className="as-artist-detail">
                             <img src={`${baseUrl}${artist?.artistImageUrl}`} alt={artist?.artistTitle} />
+                            <h4>{artist?.artistTitle}</h4>
+                            <p>{artist?.artistShortBio}</p>
                         </div>
                     )}
                 </div>
