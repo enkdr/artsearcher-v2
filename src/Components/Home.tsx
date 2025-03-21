@@ -6,11 +6,12 @@ import { Artwork } from '../types';
 import { getArtworksNearby } from '../api-calls';
 
 const Home: React.FC = () => {
+
     const [defaultRadius, setDefaultRadius] = useState<number>(100);
     const [artworks, setArtworks] = useState<Artwork[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const [coords, setCoords] = useState<{ lat: number; long: number } | null>(null);
+    const [coords, setCoords] = useState<{ lat: number; lon: number } | null>(null);
 
     useEffect(() => {
         if (navigator.geolocation) {
@@ -22,8 +23,8 @@ const Home: React.FC = () => {
 
         function onSuccess(position: GeolocationPosition) {
             const lat = position.coords.latitude;
-            const long = position.coords.longitude;
-            setCoords({ lat, long });
+            const lon = position.coords.longitude;
+            setCoords({ lat, lon });
         }
 
         function onError(err: GeolocationPositionError) {
@@ -33,11 +34,25 @@ const Home: React.FC = () => {
     }, []);
 
     useEffect(() => {
+        const savedCoords = sessionStorage.getItem("coords");
+        const savedArtworks = sessionStorage.getItem("artworks");
+
+        if (savedCoords) {
+            setCoords(JSON.parse(savedCoords));
+        }
+        if (savedArtworks) {
+            setArtworks(JSON.parse(savedArtworks));
+            setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
         if (coords) {
             setLoading(true);
-            getArtworksNearby(coords.lat, coords.long, defaultRadius)
+            getArtworksNearby(coords.lat, coords.lon, defaultRadius)
                 .then((data) => {
                     setArtworks(data);
+                    sessionStorage.setItem("artworks", JSON.stringify(data));
                     setLoading(false);
                 })
                 .catch((err) => {
@@ -46,6 +61,12 @@ const Home: React.FC = () => {
                 });
         }
     }, [coords, defaultRadius]);
+
+    useEffect(() => {
+        if (coords) {
+            sessionStorage.setItem("coords", JSON.stringify(coords));
+        }
+    }, [coords]);
 
     return (
         <div className="container">
