@@ -1,10 +1,9 @@
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { baseUrl } from "../config";
 import { Artwork } from "../types";
 
 const ArtworkScreen: React.FC = () => {
 
-    const { artworkId } = useParams<{ artworkId: string }>();
     const location = useLocation();
     const artwork: Artwork | undefined = location.state?.artwork;
 
@@ -20,11 +19,20 @@ const ArtworkScreen: React.FC = () => {
                 </div>
             </div>
             <div className="bottom-container">
-                <div className="as-gallery-detail">
-                    gallery: {artwork.galleryTitle}
-                </div>
+
                 <div className="as-artist-detail">
-                    artist: {artwork.artistTitle}
+                    <Link to={`/artist/${artwork.artistId}`}>
+                        <div className="as-artwork-card">
+                            <img src={`${baseUrl}${artwork.artistImageUrl}`} alt={artwork.artistTitle} />
+                            <div className="as-artwork-card-content">
+                                <h4>{artwork.artistTitle}</h4>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+
+                <div className="as-gallery-detail">
+                    {artwork.galleryTitle}
                 </div>
             </div>
         </div>

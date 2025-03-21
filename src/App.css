@@ -112,7 +112,8 @@ a,
   text-align: center;
 }
 
-.artwork-screen .as-artwork-detail img {
+.artwork-screen .as-artwork-detail img,
+.artist-screen .as-artist-detail img {
   width: 100%;
   height: auto;
   max-height: 50dvh;

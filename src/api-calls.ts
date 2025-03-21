@@ -3,6 +3,7 @@ import { Artist, Artwork, Country, createApiUrl, EndPoint, Gallery, GPSLocation 
 // artworks-nearby: "/api/artworks_nearby/:lat/:long/:limit"
 // artist-artworks: "/api/artist_artworks/:artistid"
 // artists: "/api/artists"
+// artist-details: "/api/artist_detail/:artistId"
 // artworks-all: "/api/artworks_all"
 // artworks-highlights: "/api/artworks_highlights"
 // artworks-random: "/api/artworks_random"
@@ -48,8 +49,15 @@ export const getGalleries = () => {
 };
 
 export const getArtistArtworks = (artistId: string) => {
-    const url = createApiUrl("artists", `artist-artworks/${artistId}`);
+    const url = createApiUrl("artists", `artist_artworks/${artistId}`);
     return fetch(url)
         .then(res => res.json())
         .then(data => data as Artwork[]);
+};
+
+export const getArtistDetails = (artistId: string) => {
+    const url = createApiUrl("artists", `artist_detail/${artistId}`);
+    return fetch(url)
+        .then(res => res.json())
+        .then(data => data as Artist);
 };

@@ -5,7 +5,8 @@ type EntityType = "artists" | "artworks" | "galleries" | "countries";
 
 type EntityApiPaths = {
     artists: "artists"
-    | `artist-artworks/${string}`; // artistId
+    | `artist_artworks/${string}` // artistId
+    | `artist_detail/${string}`; // artistId
     artworks: "artworks_all"
     | "artworks_highlights"
     | "artworks_random"

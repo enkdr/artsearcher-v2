@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import HomeScreen from './Components/HomeScreen';
 import ArtworkScreen from './Components/ArtworkScreen';
 import { Icon } from './Components/Icons';
+import ArtistScreen from './Components/ArtistScreen';
 
 function AnimatedRoutes() {
   const location = useLocation(); // track current route
@@ -13,6 +14,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageWrapper><HomeScreen /></PageWrapper>} />
         <Route path="/artwork/:artworkId" element={<PageWrapper><ArtworkScreen /></PageWrapper>} />
+        <Route path="/artist/:artistId" element={<PageWrapper><ArtistScreen /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
