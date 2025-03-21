@@ -1,34 +1,27 @@
 import { Artwork } from "../types";
 import { baseUrl } from "../config";
 
-
-interface ArtworkListProps {
-    artworks: Artwork[];
-    screen?: "search" | "home";
+interface ArtworksListProps {
+    artworks: Artwork[] | null;
+    screen: string;
 }
 
-interface ArtworkItemProps {
-    artwork: Artwork;
-}
-
-const ArtworksList: React.FC<ArtworkListProps> = ({ artworks, screen }) => {
-    console.log(artworks);
+const ArtworksList: React.FC<ArtworksListProps> = ({ artworks }) => {
     return (
-        <>
-            {screen === "search" ? (<input className="as-search-input" type="text" placeholder="Search Artworks" />) : null}
-            <div className="as-artwork-list">
-                {artworks.map((artwork: Artwork, i) => (
-                    <ArtworkItem key={i} artwork={artwork} />
-                ))}
-            </div>
-        </>
+        <div className="as-artwork-list">
+            {artworks && artworks.length > 0 ? (
+                artworks.map((artwork, i) => <ArtworkItem key={i} artwork={artwork} />)
+            ) : (
+                <p>No artworks found</p>
+            )}
+        </div>
     );
 };
 
-const ArtworkItem: React.FC<ArtworkItemProps> = ({ artwork }) => {
+const ArtworkItem: React.FC<{ artwork: Artwork }> = ({ artwork }) => {
     return (
         <div className="as-artwork-card">
-            <img loading="lazy" src={`${baseUrl}` + artwork.imageUrl} alt={artwork.artworkTitle} />
+            <img loading="lazy" src={`${baseUrl}${artwork.imageUrl}`} alt={artwork.artworkTitle} />
             <div className="as-artwork-card-content">
                 <h4>{artwork.artworkTitle}</h4>
                 <p className="as-artwork-card-artist">{artwork.artistTitle}</p>
@@ -36,6 +29,6 @@ const ArtworkItem: React.FC<ArtworkItemProps> = ({ artwork }) => {
             </div>
         </div>
     );
-}
+};
 
 export default ArtworksList;

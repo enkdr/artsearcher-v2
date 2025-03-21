@@ -46,3 +46,10 @@ export const getGalleries = () => {
         .then(res => res.json())
         .then(data => data as Gallery[]);
 };
+
+export const getArtistArtworks = (artistId: string) => {
+    const url = createApiUrl("artists", `artist-artworks/${artistId}`);
+    return fetch(url)
+        .then(res => res.json())
+        .then(data => data as Artwork[]);
+};

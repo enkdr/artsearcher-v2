@@ -3,9 +3,7 @@ import ArtistList from "./ArtistsList";
 import ArtworksList from "./ArtworksList";
 import { Artist, Artwork } from "../types";
 import { getArtists, getHighlights, getArtistArtworks } from "../api-calls";
-import { Loading } from '../Components/Loading';
-import { get } from "http";
-
+import { Loading } from './Loading';
 
 const Search: React.FC = () => {
     const [artists, setArtists] = useState<Artist[]>([]);
@@ -32,10 +30,6 @@ const Search: React.FC = () => {
             setHighlights(artworks);
         });
     };
-
-
-    // Filter artists based on search input
-
 
     if (filteredArtists.length === 1) {
 
