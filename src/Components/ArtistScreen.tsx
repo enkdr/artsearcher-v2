@@ -71,6 +71,8 @@ const ArtistScreen: React.FC = () => {
 
     return (
         <>
+            {error && <div className="error">{error}</div>}
+
             <div className="container artist-screen">
                 <div className="top-container">
                     {loadingArtist ? (
@@ -90,7 +92,6 @@ const ArtistScreen: React.FC = () => {
                         <ArtworksList artworks={artworks} />
                     )}
                 </div>
-
             </div>
 
         </>

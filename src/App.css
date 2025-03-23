@@ -132,9 +132,14 @@ a,
 
 .as-gallery-detail,
 .as-artist-detail {
-  padding: 1rem;
   background: var(--off-white);
   border-radius: 0.5rem;
+}
+
+.as-gallery-detail h4,
+.as-artist-detail h4 {
+  text-align: center;
+  padding: .75rem 0;
 }
 
 .as-artwork-card img,

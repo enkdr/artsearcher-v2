@@ -1,4 +1,4 @@
-import { Artist, Artwork, Country, createApiUrl, EndPoint, Gallery, GPSLocation } from './types';
+import { Artist, Artwork, createApiUrl, Gallery } from './types';
 
 // artworks-nearby: "/api/artworks_nearby/:lat/:long/:limit"
 // artist-artworks: "/api/artist_artworks/:artistid"

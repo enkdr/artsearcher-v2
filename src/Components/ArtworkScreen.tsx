@@ -1,14 +1,14 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { baseUrl } from "../config";
 import { Artwork } from "../types";
+import ASMap from "./ASMap";
 
 const ArtworkScreen: React.FC = () => {
 
     const location = useLocation();
     const artwork: Artwork | undefined = location.state?.artwork;
 
-    if (!artwork) return <p>Artwork not found</p>;
-
+    if (!artwork) return <div className="error">Artwork not found</div>;
 
     return (
         <div className="container artwork-screen">
@@ -32,7 +32,7 @@ const ArtworkScreen: React.FC = () => {
                 </div>
 
                 <div className="as-gallery-detail">
-                    {artwork.galleryTitle}
+                    <ASMap artworks={[artwork]} />
                 </div>
             </div>
         </div>

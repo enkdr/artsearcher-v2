@@ -25,7 +25,7 @@ export interface EndPoint<T extends EntityType> {
 }
 
 export function createApiUrl<T extends EntityType>(
-    entity: T,
+    _entity: T,
     path: EntityApiPaths[T]
 ): `${typeof apiUrl}/${EntityApiPaths[T]}` {
     return `${apiUrl}/${path}`;
@@ -39,7 +39,6 @@ export function createApiUrl<T extends EntityType>(
 // it's helpful to have artwork contain everything  
 export interface Artwork {
     artworkId: string;
-    galleryId: string;
     artworkTitle: string;
     artworkYear: string;
     artworkMedium: string;
@@ -52,6 +51,7 @@ export interface Artwork {
     artistTitle: string;
     artistFirstname: string;
     artistLastname: string;
+    galleryId: string;
     galleryTitle: string;
     galleryAddress: string;
     galleryLink: string;
