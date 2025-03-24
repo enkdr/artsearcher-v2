@@ -61,6 +61,17 @@ export interface Artwork {
     countryTitle: string;
 }
 
+export interface Gallery {
+    galleryId: string;
+    galleryTitle: string;
+    galleryAddress: string;
+    galleryLink: string;
+    galleryLat: number;
+    galleryLon: number;
+    countryId: string;
+    countryTitle: string;
+}
+
 export interface Artist {
     artistId: string;
     artistTitle: string;
@@ -72,17 +83,6 @@ export interface Artist {
     artistBio: string;
     artistBorn: string;
     artistDied: string;
-}
-
-export interface Gallery {
-    galleryId: string;
-    galleryTitle: string;
-    galleryAddress: string;
-    galleryLink: string;
-    galleryLat: number;
-    galleryLon: number;
-    countryId: string;
-    countryTitle: string;
 }
 
 export interface Country {

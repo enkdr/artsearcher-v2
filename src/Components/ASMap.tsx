@@ -74,7 +74,6 @@ const ASMap: React.FC<ASMapProps> = ({ galleries = [], artworks = [] }) => {
 
         const gallerySource = new VectorSource();
         const artworkSource = new VectorSource();
-        let extent = undefined;
 
         // Add galleries as point features
         galleries.forEach((gallery) => {
@@ -84,11 +83,17 @@ const ASMap: React.FC<ASMapProps> = ({ galleries = [], artworks = [] }) => {
             feature.setStyle(galleryStyle);
             gallerySource.addFeature(feature);
 
-            if (!extent) {
-                extent = feature.getGeometry()?.getExtent();
-            } else {
-                extend(extent, feature.getGeometry()?.getExtent());
+            let extent = gallerySource.getExtent();
+
+            if (extent) {
+                const bufferedExtent = buffer(extent, 1000); // Add a buffer to prevent excessive zoom-in
+                map.getView().fit(bufferedExtent, {
+                    padding: [50, 50, 50, 50],
+                    duration: 1000,
+                    maxZoom: 10, // Set a max zoom to prevent excessive close-ups
+                });
             }
+
         });
 
         // Add artworks as point features
@@ -99,10 +104,15 @@ const ASMap: React.FC<ASMapProps> = ({ galleries = [], artworks = [] }) => {
             feature.setStyle(artworkStyle);
             artworkSource.addFeature(feature);
 
-            if (!extent) {
-                extent = feature.getGeometry()?.getExtent();
-            } else {
-                extend(extent, feature.getGeometry()?.getExtent());
+            let extent = artworkSource.getExtent();
+
+            if (extent) {
+                const bufferedExtent = buffer(extent, 1000); // Add a buffer to prevent excessive zoom-in
+                map.getView().fit(bufferedExtent, {
+                    padding: [50, 50, 50, 50],
+                    duration: 1000,
+                    maxZoom: 10, // Set a max zoom to prevent excessive close-ups
+                });
             }
         });
 
@@ -112,15 +122,7 @@ const ASMap: React.FC<ASMapProps> = ({ galleries = [], artworks = [] }) => {
         map.addLayer(galleryLayer);
         map.addLayer(artworkLayer);
 
-        // Fit the map to the extent of the features with min zoom handling
-        if (extent) {
-            const bufferedExtent = buffer(extent, 1000); // Add a buffer to prevent excessive zoom-in
-            map.getView().fit(bufferedExtent, {
-                padding: [50, 50, 50, 50],
-                duration: 1000,
-                maxZoom: 10, // Set a max zoom to prevent excessive close-ups
-            });
-        }
+
     }, [galleries, artworks]);
 
     return <div ref={mapRef} className="as-map" />;
