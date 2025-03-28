@@ -1,11 +1,12 @@
 import { useEffect, useState, useMemo } from "react";
-import ASMap from "./ASMap";
-import ArtworksList from "./ArtworksList";
-import { Loading } from "./Loading";
+import ASMap from "../Components/ASMap";
+import ArtworksList from "../Components/ArtworksList";
+import { Loading } from "../Components/Loading";
 import { Artwork, Gallery } from "../types";
 import { getArtworksNearby } from "../api-calls";
 
 const HomeScreen: React.FC = () => {
+
     const [defaultRadius, setDefaultRadius] = useState<number>(100);
     const [artworks, setArtworks] = useState<Artwork[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
@@ -13,6 +14,7 @@ const HomeScreen: React.FC = () => {
     const [coords, setCoords] = useState<{ lat: number; lon: number } | null>(null);
 
     useEffect(() => {
+
         const savedCoords = sessionStorage.getItem("coords");
         const savedArtworks = sessionStorage.getItem("artworks");
 

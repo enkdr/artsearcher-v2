@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { baseUrl } from "../config";
 import { Artwork } from "../types";
-import ASMap from "./ASMap";
+import ASMap from "../Components/ASMap";
 
 const ArtworkScreen: React.FC = () => {
 
@@ -31,7 +31,7 @@ const ArtworkScreen: React.FC = () => {
                     </Link>
                 </div>
 
-                <div className="as-gallery-detail">
+                <div className="as-gallery-detail" >
                     <ASMap artworks={[artwork]} />
                 </div>
             </div>

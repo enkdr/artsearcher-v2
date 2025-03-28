@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { baseUrl } from "../config";
 import { Artist, Artwork } from "../types";
 import { getArtistDetails, getArtistArtworks } from "../api-calls";
-import { Loading } from "./Loading";
-import ArtworksList from "./ArtworksList";
+import { Loading } from "../Components/Loading";
+import ArtworksList from "../Components/ArtworksList";
 
 const ArtistScreen: React.FC = () => {
     const { artistId } = useParams<{ artistId: string }>();

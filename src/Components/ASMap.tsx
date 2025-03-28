@@ -89,7 +89,7 @@ const ASMap: React.FC<ASMapProps> = ({ galleries = [], artworks = [] }) => {
                 const bufferedExtent = buffer(extent, 1000); // Add a buffer to prevent excessive zoom-in
                 map.getView().fit(bufferedExtent, {
                     padding: [50, 50, 50, 50],
-                    duration: 1000,
+                    // duration: 500,
                     maxZoom: 10, // Set a max zoom to prevent excessive close-ups
                 });
             }
@@ -110,7 +110,7 @@ const ASMap: React.FC<ASMapProps> = ({ galleries = [], artworks = [] }) => {
                 const bufferedExtent = buffer(extent, 1000); // Add a buffer to prevent excessive zoom-in
                 map.getView().fit(bufferedExtent, {
                     padding: [50, 50, 50, 50],
-                    duration: 1000,
+                    // duration: 500,
                     maxZoom: 10, // Set a max zoom to prevent excessive close-ups
                 });
             }
