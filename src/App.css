@@ -293,3 +293,38 @@ nav a:hover {
     stroke-dashoffset: -125px;
   }
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  white-space: nowrap;
+  padding-bottom: 0.5rem;
+}
+
+.scroll-item {
+  flex: 0 0 auto;
+  padding: 0.75rem 1rem;
+  background: #f3f3f3;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}

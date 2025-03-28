@@ -1,10 +1,11 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import HomeScreen from './Screens/HomeScreen';
-import ArtworkScreen from './Screens/ArtworkScreen';
+import HomeScreen from './Screens/Home';
 import { Icon } from './Components/Icons';
-import ArtistScreen from './Screens/ArtistScreen';
+import ArtworkScreen from './Screens/Artwork';
+import ArtistScreen from './Screens/Artist';
+import SearchScreen from './Screens/Search';
 
 function AnimatedRoutes() {
   const location = useLocation(); // track current route
@@ -15,7 +16,7 @@ function AnimatedRoutes() {
         <Route path="/" element={<PageWrapper><HomeScreen /></PageWrapper>} />
         <Route path="/artwork/:artworkId" element={<PageWrapper><ArtworkScreen /></PageWrapper>} />
         <Route path="/artist/:artistId" element={<PageWrapper><ArtistScreen /></PageWrapper>} />
-        <Route path="/search" element={<PageWrapper><ArtistScreen /></PageWrapper>} />
+        <Route path="/search" element={<PageWrapper><SearchScreen /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );

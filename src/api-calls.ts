@@ -1,4 +1,4 @@
-import { Artist, Artwork, createApiUrl, Gallery } from './types';
+import { Artist, Artwork, Country, createApiUrl, Gallery } from './types';
 
 // artworks-nearby: "/api/artworks_nearby/:lat/:long/:limit"
 // artist-artworks: "/api/artist_artworks/:artistid"
@@ -19,14 +19,6 @@ import { Artist, Artwork, createApiUrl, Gallery } from './types';
 // const url2 = createApiUrl("artworks", `artworks-nearby/40.7128/-74.0060/10`);
 
 
-export const getArtworksNearby = (lat: number, lon: number, radius: number = 100) => {
-
-    const url = createApiUrl("artworks", `artworks_nearby/${lat}/${lon}/${radius}`);
-    return fetch(url)
-        .then(res => res.json())
-        .then(data => data as Artwork[]);
-};
-
 export const getArtists = () => {
     const url = createApiUrl("artists", `artists`);
     return fetch(url)
@@ -34,8 +26,8 @@ export const getArtists = () => {
         .then(data => data as Artist[]);
 };
 
-export const getHighlights = () => {
-    const url = createApiUrl("artworks", `artworks_highlights`);
+export const getArtworks = () => {
+    const url = createApiUrl("artworks", `artworks_all`);
     return fetch(url)
         .then(res => res.json())
         .then(data => data as Artwork[]);
@@ -46,6 +38,28 @@ export const getGalleries = () => {
     return fetch(url)
         .then(res => res.json())
         .then(data => data as Gallery[]);
+};
+
+export const getCountries = () => {
+    const url = createApiUrl("countries", `countries`);
+    return fetch(url)
+        .then(res => res.json())
+        .then(data => data as Country[]);
+};
+
+
+export const getArtworksNearby = (lat: number, lon: number, radius: number = 100) => {
+    const url = createApiUrl("artworks", `artworks_nearby/${lat}/${lon}/${radius}`);
+    return fetch(url)
+        .then(res => res.json())
+        .then(data => data as Artwork[]);
+};
+
+export const getHighlights = () => {
+    const url = createApiUrl("artworks", `artworks_highlights`);
+    return fetch(url)
+        .then(res => res.json())
+        .then(data => data as Artwork[]);
 };
 
 export const getArtistArtworks = (artistId: string) => {
