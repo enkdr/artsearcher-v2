@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getArtists, getGalleries, getArtworks, getCountries } from "../api-calls";
 import { Artwork, Country, Artist, Gallery } from "../types";
 import { Loading } from "../Components/Loading";
+import { ArtworkItem } from "../Components/ArtworksList";
 
 const SearchScreen: React.FC = () => {
     const [artworks, setArtworks] = useState<Artwork[] | null>(null);
@@ -68,7 +69,7 @@ const SearchScreen: React.FC = () => {
         artist.artistTitle.toLowerCase().includes(searchArtists.toLowerCase())
     );
 
-    const filteredArtworks = artworks?.filter((artwork) =>
+    const filteredArtworks = artworks?.filter((artwork: Artwork) =>
         artwork.artworkTitle.toLowerCase().includes(searchArtworks.toLowerCase())
     );
 
@@ -115,9 +116,11 @@ const SearchScreen: React.FC = () => {
                             value={searchArtworks}
                             onChange={(e) => setSearchArtworks(e.target.value)}
                         />
-                        <div className="scroll-container">
-                            {filteredArtworks?.map((artwork) => (
-                                <div key={artwork.artworkId} className="scroll-item">{artwork.artworkTitle}</div>
+                        <div className="artwork-scroll-container">
+                            {filteredArtworks?.map((artwork: Artwork) => (
+                                <div key={artwork.artworkId} className="artwork-scroll-item">
+                                    <ArtworkItem artwork={artwork} />
+                                </div>
                             ))}
                         </div>
                     </>

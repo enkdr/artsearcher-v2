@@ -19,7 +19,7 @@ const ArtworksList: React.FC<ArtworksListProps> = ({ artworks }) => {
     );
 };
 
-const ArtworkItem: React.FC<{ artwork: Artwork }> = ({ artwork }) => {
+export const ArtworkItem: React.FC<{ artwork: Artwork }> = ({ artwork }) => {
     return (
         <Link to={`/artwork/${artwork.artworkId}`} state={{ artwork }}>
             <div className="as-artwork-card">
