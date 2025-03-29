@@ -5,13 +5,13 @@ import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 import "ol/ol.css";
 import { Artwork, Gallery } from "../types";
-import { fromLonLat, transformExtent } from "ol/proj";
+import { fromLonLat } from "ol/proj";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import Feature from "ol/Feature";
 import Point from "ol/geom/Point";
 import { Fill, Stroke, Style, Text } from "ol/style";
-import { extend, buffer } from "ol/extent";
+import { buffer } from "ol/extent";
 import CircleStyle from "ol/style/Circle";
 
 
@@ -57,13 +57,6 @@ const ASMap: React.FC<ASMapProps> = ({ galleries = [], artworks = [] }) => {
             }
         });
 
-        const galleryStyle = new Style({
-            image: new CircleStyle({
-                radius: 8,
-                // fill: new Fill({ color: "#809fff" }),
-                stroke: new Stroke({ color: "#03123c", width: 2 }),
-            }),
-        });
 
         const artworkStyle = new Style({
             image: new CircleStyle({
