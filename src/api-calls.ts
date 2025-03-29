@@ -47,9 +47,22 @@ export const getCountries = () => {
         .then(data => data as Country[]);
 };
 
-
 export const getArtworksNearby = (lat: number, lon: number, radius: number = 100) => {
     const url = createApiUrl("artworks", `artworks_nearby/${lat}/${lon}/${radius}`);
+    return fetch(url)
+        .then(res => res.json())
+        .then(data => data as Artwork[]);
+};
+
+export const getArtworksByGallery = (galleryId: string) => {
+    const url = createApiUrl("galleries", `gallery_artworks/${galleryId}`);
+    return fetch(url)
+        .then(res => res.json())
+        .then(data => data as Artwork[]);
+};
+
+export const getArtworksByCountry = (countryId: string) => {
+    const url = createApiUrl("countries", `country_artworks/${countryId}`);
     return fetch(url)
         .then(res => res.json())
         .then(data => data as Artwork[]);

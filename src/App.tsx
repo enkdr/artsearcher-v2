@@ -6,6 +6,7 @@ import { Icon } from './Components/Icons';
 import ArtworkScreen from './Screens/Artwork';
 import ArtistScreen from './Screens/Artist';
 import SearchScreen from './Screens/Search';
+import ArtworkResultsScreen from './Screens/ArtworkResults';
 
 function AnimatedRoutes() {
   const location = useLocation(); // track current route
@@ -17,6 +18,8 @@ function AnimatedRoutes() {
         <Route path="/artwork/:artworkId" element={<PageWrapper><ArtworkScreen /></PageWrapper>} />
         <Route path="/artist/:artistId" element={<PageWrapper><ArtistScreen /></PageWrapper>} />
         <Route path="/search" element={<PageWrapper><SearchScreen /></PageWrapper>} />
+        <Route path="/gallery/:galleryId" element={<PageWrapper><ArtworkResultsScreen /></PageWrapper>} />
+        <Route path="/country/:countryId" element={<PageWrapper><ArtworkResultsScreen /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );

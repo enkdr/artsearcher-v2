@@ -3,9 +3,8 @@ import { getArtists, getGalleries, getArtworks, getCountries } from "../api-call
 import { Artwork, Country, Artist, Gallery } from "../types";
 import { Loading } from "../Components/Loading";
 import { ArtworkItem } from "../Components/ArtworksList";
-import { baseUrl } from "../config";
-import { Link } from "react-router-dom";
 import { ArtistItem } from "../Components/ArtistList";
+import { Link } from "react-router-dom";
 
 const SearchScreen: React.FC = () => {
     const [artworks, setArtworks] = useState<Artwork[] | null>(null);
@@ -96,7 +95,7 @@ const SearchScreen: React.FC = () => {
                             value={searchArtists}
                             onChange={(e) => setSearchArtists(e.target.value)}
                         />
-                        <div className="image-scroll-container">
+                        <div className="image-scroll-container" >
                             {filteredArtists?.map((artist) => (
                                 <ArtistItem key={artist.artistId} artist={artist} />
                             ))}
@@ -146,7 +145,9 @@ const SearchScreen: React.FC = () => {
                         />
                         <div className="scroll-container">
                             {filteredGalleries?.map((gallery) => (
-                                <div key={gallery.galleryId} className="scroll-item">{gallery.galleryTitle}</div>
+                                <Link key={gallery.galleryId} to={`/gallery/${gallery.galleryId}`}>
+                                    <div className="scroll-item">{gallery.galleryTitle}</div>
+                                </Link>
                             ))}
                         </div>
                     </>
@@ -169,7 +170,9 @@ const SearchScreen: React.FC = () => {
                         />
                         <div className="scroll-container">
                             {filteredCountries?.map((country) => (
-                                <div key={country.countryId} className="scroll-item">{country.countryTitle}</div>
+                                <Link key={country.countryId} to={`/country/${country.countryId}`}>
+                                    <div className="scroll-item">{country.countryTitle}</div>
+                                </Link>
                             ))}
                         </div>
                     </>
