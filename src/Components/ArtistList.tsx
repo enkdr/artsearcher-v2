@@ -23,7 +23,7 @@ export const ArtistItem: React.FC<{ artist: Artist }> = ({ artist }) => {
     return (
         <Link to={`/artist/${artist.artistId}`} state={{ artist }}>
             <div className="as-artist-card">
-                <img loading="lazy" src={`${baseUrl}${artist.artistImageUrl}`} alt={artist.artistTitle} />
+                <img src={`${baseUrl}${artist.artistImageUrl}`} alt={artist.artistTitle} />
                 <div className="as-artist-card-content">
                     <h4>{artist.artistTitle}</h4>
                 </div>

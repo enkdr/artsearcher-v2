@@ -57,8 +57,11 @@ const ArtworkScreen: React.FC = () => {
                             alt={artwork.artworkTitle}
                             className="modal-image"
                         />
-                        <h4>{artwork.artworkTitle}</h4>
+                        <h4>{artwork.artworkTitle} - {artwork.artworkYear}</h4>
                         <p>{artwork.artistTitle}</p>
+                        <p><small>{artwork.artworkStyle}</small></p>
+                        <p><small>{artwork.artworkMedium} {artwork.artworkDimensions}</small></p>
+                        <p><small>{artwork.galleryTitle}</small></p>
                     </div>
                 </div>
             )}

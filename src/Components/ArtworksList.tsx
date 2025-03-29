@@ -23,7 +23,7 @@ export const ArtworkItem: React.FC<{ artwork: Artwork }> = ({ artwork }) => {
     return (
         <Link to={`/artwork/${artwork.artworkId}`} state={{ artwork }}>
             <div className="as-artwork-card">
-                <img loading="lazy" src={`${baseUrl}${artwork.imageUrl}`} alt={artwork.artworkTitle} />
+                <img src={`${baseUrl}${artwork.imageUrl}`} alt={artwork.artworkTitle} />
                 <div className="as-artwork-card-content">
                     <h4>{artwork.artworkTitle}</h4>
                     <p className="as-artwork-card-artist">{artwork.artistTitle}</p>

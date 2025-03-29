@@ -84,7 +84,8 @@ const SearchScreen: React.FC = () => {
     );
 
     return (
-        <div className="container">
+        <div className="container search-container">
+
             {/* Artists Section */}
             <div className="section">
                 {!loadingArtists && !error ? (
@@ -182,6 +183,7 @@ const SearchScreen: React.FC = () => {
                     </div>
                 )}
             </div>
+
         </div>
     );
 };

@@ -43,10 +43,9 @@ const Navigation = () => {
 
   return (
     <nav>
+      <Icon icon="arrowLeft" onClick={() => navigate(-1)} />
       <Icon icon="home" onClick={() => navigate("/")} />
       <Icon icon="search" onClick={() => navigate("/search")} />
-      <Icon icon="arrowLeft" onClick={() => navigate(-1)} />
-      <Icon icon="arrowRight" onClick={() => navigate(1)} />
     </nav>
   );
 };
