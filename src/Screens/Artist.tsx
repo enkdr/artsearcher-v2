@@ -97,6 +97,7 @@ const ArtistScreen: React.FC = () => {
                                     <div className="flip-back">
                                         <div className="as-artist-detail">
                                             <h4>{artist?.artistTitle}</h4>
+                                            <h5>{artist?.artistNationality} b:{artist?.artistBorn} - d:{artist?.artistDied}</h5>
                                             <p>{artist?.artistShortBio}</p>
                                         </div>
                                     </div>

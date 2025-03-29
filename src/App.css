@@ -375,6 +375,21 @@ input {
   transform: rotateY(180deg);
 }
 
+.flip-back h4 {
+  font-size: 1.3rem;
+}
+
+.flip-back h5 {
+  font-size: 1.2rem;
+  margin: .5rem 0;
+}
+
+.flip-back p {
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
 /* Modal Overlay */
 .modal-overlay {
   position: fixed;
