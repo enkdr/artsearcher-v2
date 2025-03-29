@@ -118,24 +118,48 @@ const ASMap: React.FC<ASMapProps> = ({ galleries = [], artworks = [] }) => {
         });
 
         // Add artworks as point features
-        artworks.forEach((artwork) => {
-            const feature = new Feature({
-                geometry: new Point(fromLonLat([artwork.galleryLon, artwork.galleryLat])),
-            });
-            feature.setStyle(artworkStyle);
-            artworkSource.addFeature(feature);
-
-            let extent = artworkSource.getExtent();
-
-            if (extent) {
-                const bufferedExtent = buffer(extent, 1000); // Add a buffer to prevent excessive zoom-in
-                map.getView().fit(bufferedExtent, {
-                    padding: [50, 50, 50, 50],
-                    // duration: 500,
-                    maxZoom: 10, // Set a max zoom to prevent excessive close-ups
+        if (artworks.length === 1) {
+            artworks.forEach((artwork) => {
+                const feature = new Feature({
+                    geometry: new Point(fromLonLat([artwork.galleryLon, artwork.galleryLat])),
                 });
-            }
-        });
+                feature.setStyle(artworkStyle);
+                artworkSource.addFeature(feature);
+
+                // Add galleryTitle as label
+                const galleryTitle = artwork.galleryTitle;
+                if (galleryTitle) {
+                    const titleFeature = new Feature({
+                        geometry: new Point(fromLonLat([artwork.galleryLon, artwork.galleryLat])),
+                        name: galleryTitle, // Set the gallery title
+                    });
+                    titleFeature.setStyle(new Style({
+                        text: new Text({
+                            text: galleryTitle,
+                            font: 'bold 12px sans-serif',
+                            fill: new Fill({
+                                color: '#000',
+                            }),
+                            stroke: new Stroke({
+                                color: '#fff',
+                                width: 2,
+                            }),
+                        }),
+                    }));
+                    artworkSource.addFeature(titleFeature);
+                }
+
+                let extent = artworkSource.getExtent();
+
+                if (extent) {
+                    const bufferedExtent = buffer(extent, 1000); // Add a buffer to prevent excessive zoom-in
+                    map.getView().fit(bufferedExtent, {
+                        padding: [50, 50, 50, 50],
+                        maxZoom: 10, // Set a max zoom to prevent excessive close-ups
+                    });
+                }
+            });
+        }
 
         const galleryLayer = new VectorLayer({ source: gallerySource });
         const artworkLayer = new VectorLayer({ source: artworkSource });
