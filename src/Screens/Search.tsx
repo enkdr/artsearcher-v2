@@ -3,6 +3,9 @@ import { getArtists, getGalleries, getArtworks, getCountries } from "../api-call
 import { Artwork, Country, Artist, Gallery } from "../types";
 import { Loading } from "../Components/Loading";
 import { ArtworkItem } from "../Components/ArtworksList";
+import { baseUrl } from "../config";
+import { Link } from "react-router-dom";
+import { ArtistItem } from "../Components/ArtistList";
 
 const SearchScreen: React.FC = () => {
     const [artworks, setArtworks] = useState<Artwork[] | null>(null);
@@ -93,9 +96,9 @@ const SearchScreen: React.FC = () => {
                             value={searchArtists}
                             onChange={(e) => setSearchArtists(e.target.value)}
                         />
-                        <div className="scroll-container">
+                        <div className="image-scroll-container">
                             {filteredArtists?.map((artist) => (
-                                <div key={artist.artistId} className="scroll-item">{artist.artistTitle}</div>
+                                <ArtistItem key={artist.artistId} artist={artist} />
                             ))}
                         </div>
                     </>
@@ -116,9 +119,9 @@ const SearchScreen: React.FC = () => {
                             value={searchArtworks}
                             onChange={(e) => setSearchArtworks(e.target.value)}
                         />
-                        <div className="artwork-scroll-container">
+                        <div className="image-scroll-container">
                             {filteredArtworks?.map((artwork: Artwork) => (
-                                <div key={artwork.artworkId} className="artwork-scroll-item">
+                                <div key={artwork.artworkId} className="image-scroll-item">
                                     <ArtworkItem artwork={artwork} />
                                 </div>
                             ))}
