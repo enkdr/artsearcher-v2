@@ -7,12 +7,15 @@ import { Loading } from "../Components/Loading";
 import ArtworksList from "../Components/ArtworksList";
 
 const ArtistScreen: React.FC = () => {
+
     const { artistId } = useParams<{ artistId: string }>();
     const [artist, setArtist] = useState<Artist | null>(null);
     const [artworks, setArtworks] = useState<Artwork[] | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loadingArtist, setLoadingArtist] = useState<boolean>(true);
     const [loadingArtworks, setLoadingArtworks] = useState<boolean>(true);
+
+    const [flip, setFlip] = useState<boolean>(false);
 
 
     useEffect(() => {
@@ -30,6 +33,7 @@ const ArtistScreen: React.FC = () => {
                     setError("Artist not found");
                     setArtist(null);
                 } else {
+                    console.log(data)
                     setArtist(data);
                 }
             })
@@ -78,11 +82,27 @@ const ArtistScreen: React.FC = () => {
                     {loadingArtist ? (
                         <Loading />
                     ) : (
-                        <div className="as-artist-detail">
-                            <img src={`${baseUrl}${artist?.artistImageUrl}`} alt={artist?.artistTitle} />
-                            <h4>{artist?.artistTitle}</h4>
-                            <p>{artist?.artistShortBio}</p>
-                        </div>
+                        <>
+                            <div className={`flip-card ${flip ? "flipped" : ""}`} onClick={() => setFlip(!flip)}>
+                                <div className="flip-card-inner">
+                                    {/* Front Side - Image & Title */}
+                                    <div className="flip-front">
+                                        <div className="as-artist-detail">
+                                            <img src={`${baseUrl}${artist?.artistImageUrl}`} alt={artist?.artistTitle} />
+                                            <h4>{artist?.artistTitle}</h4>
+                                        </div>
+                                    </div>
+
+                                    {/* Back Side - Bio */}
+                                    <div className="flip-back">
+                                        <div className="as-artist-detail">
+                                            <h4>{artist?.artistTitle}</h4>
+                                            <p>{artist?.artistShortBio}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
                     )}
                 </div>
                 <div className="bottom-container">

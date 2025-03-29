@@ -81,8 +81,17 @@ const iconPaths = {
     close: [
         'M18 6l-12 12',
         'M6 6l12 12'
+    ],
+    arrowLeft: [
+        'M13 15l-3 -3l3 -3',
+        'M21 12a9 9 0 1 0 -18 0a9 9 0 0 0 18 0z'
+    ],
+    arrowRight: [
+        'M11 9l3 3l-3 3',
+        'M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0z'
     ]
 }
+
 
 export const defaultProfileImage = (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" width="48" height="48" strokeWidth="0.75">

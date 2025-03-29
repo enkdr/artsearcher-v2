@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import HomeScreen from './Screens/Home';
 import { Icon } from './Components/Icons';
@@ -30,13 +30,26 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
     initial={{ x: '100%', opacity: 0 }}
     animate={{ x: 0, opacity: 1 }}
     exit={{ x: '-100%', opacity: 0 }}
-    transition={{ duration: 0.4, ease: 'easeOut' }}
+    transition={{ duration: 0.2, ease: 'easeOut' }}
     style={{ position: 'absolute', width: '100%', height: '100%' }}
   >
     {children}
   </motion.div>
 );
 
+
+const Navigation = () => {
+  const navigate = useNavigate();
+
+  return (
+    <nav>
+      <Icon icon="arrowLeft" onClick={() => navigate(-1)} />
+      <Icon icon="home" onClick={() => navigate("/")} />
+      <Icon icon="search" onClick={() => navigate("/search")} />
+      <Icon icon="arrowRight" onClick={() => navigate(1)} />
+    </nav>
+  );
+};
 
 function App() {
 
@@ -45,15 +58,7 @@ function App() {
       <div style={{ position: 'relative', overflow: 'hidden', height: 'calc(100vh - 60px)' }}>
         <AnimatedRoutes />
       </div>
-
-      <nav>
-        <Link to="/">
-          <Icon icon="home" />
-        </Link>
-        <Link to="/search">
-          <Icon icon="search" />
-        </Link>
-      </nav>
+      <Navigation />
     </Router>
   );
 }

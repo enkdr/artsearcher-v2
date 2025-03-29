@@ -10,9 +10,10 @@ import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import Feature from "ol/Feature";
 import Point from "ol/geom/Point";
-import { Fill, Stroke, Style } from "ol/style";
+import { Fill, Stroke, Style, Text } from "ol/style";
 import { extend, buffer } from "ol/extent";
 import CircleStyle from "ol/style/Circle";
+
 
 interface ASMapProps {
     galleries?: Gallery[];
@@ -75,11 +76,33 @@ const ASMap: React.FC<ASMapProps> = ({ galleries = [], artworks = [] }) => {
         const gallerySource = new VectorSource();
         const artworkSource = new VectorSource();
 
-        // Add galleries as point features
         galleries.forEach((gallery) => {
             const feature = new Feature({
                 geometry: new Point(fromLonLat([gallery.galleryLon, gallery.galleryLat])),
             });
+
+            // Create a style with gallery title label
+            const galleryStyle = new Style({
+                image: new CircleStyle({
+                    radius: 8,
+                    fill: new Fill({ color: '#ffcc33' }),
+                    stroke: new Stroke({
+                        color: '#ffffff',
+                        width: 2
+                    })
+                }),
+                text: new Text({
+                    text: gallery.galleryTitle,  // Gallery title as label
+                    font: '12px sans-serif',  // Font size and family
+                    fill: new Fill({ color: '#000000' }),  // Label text color
+                    stroke: new Stroke({
+                        color: '#ffffff',  // Stroke around text for better visibility
+                        width: 3
+                    }),
+                    offsetY: -20,  // Position the label slightly above the point
+                }),
+            });
+
             feature.setStyle(galleryStyle);
             gallerySource.addFeature(feature);
 
@@ -89,11 +112,9 @@ const ASMap: React.FC<ASMapProps> = ({ galleries = [], artworks = [] }) => {
                 const bufferedExtent = buffer(extent, 1000); // Add a buffer to prevent excessive zoom-in
                 map.getView().fit(bufferedExtent, {
                     padding: [50, 50, 50, 50],
-                    // duration: 500,
                     maxZoom: 10, // Set a max zoom to prevent excessive close-ups
                 });
             }
-
         });
 
         // Add artworks as point features
